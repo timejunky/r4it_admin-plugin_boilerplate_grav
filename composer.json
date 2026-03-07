@@ -2,6 +2,11 @@
     "name": "timejunky/grav-plugin-admin-plugin-boilerplate",
     "type": "grav-plugin",
     "description": "A boilerplate for Grav admin tool plugins.",
+    "homepage": "https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav",
+    "support": {
+        "issues": "https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav/issues",
+        "source": "https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav"
+    },
     "license": "MIT",
     "require": {
         "php": ">=8.1"

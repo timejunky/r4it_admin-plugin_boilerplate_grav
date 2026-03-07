@@ -8,6 +8,8 @@ use Grav\Common\Plugin;
 
 class R4itAdminPluginBoilerplatePlugin extends Plugin
 {
+    public const REPO_URL = 'https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav';
+
     public static function getSubscribedEvents(): array
     {
         return [
@@ -135,6 +137,10 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
         require_once __DIR__ . '/classes/Admin/AdminPluginBoilerplateAdminController.php';
         $controller = new \Grav\Plugin\R4itAdminPluginBoilerplate\Admin\AdminPluginBoilerplateAdminController($this->grav, $this);
         $data = $controller->handleRequest();
+
+        if (is_array($data)) {
+            $data['r4it_admin_plugin_boilerplate_repo_url'] = self::REPO_URL;
+        }
 
         if ($twig && isset($twig->twig_vars) && is_array($twig->twig_vars) && is_array($data)) {
             $twig->twig_vars = array_merge($twig->twig_vars, $data);
