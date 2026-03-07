@@ -1,0 +1,41 @@
+name: r4it Tool Boilerplate
+slug: r4it_tool_boilerplate
+type: plugin
+version: 0.0.2
+description: GrayGate-style admin tool-page boilerplate (Method 2).
+icon: wrench
+
+author:
+  name: r4it
+
+form:
+  validation: strict
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        tab_general:
+          type: tab
+          title: General
+          fields:
+            enabled:
+              type: toggle
+              label: PLUGIN_ADMIN.PLUGIN_STATUS
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+        tab_settings:
+          type: tab
+          title: Settings
+          fields:
+            boilerplate_hint:
+              type: display
+              label: " "
+              markdown: true
+              content: "This plugin is a boilerplate. Settings belong to your derived plugin."

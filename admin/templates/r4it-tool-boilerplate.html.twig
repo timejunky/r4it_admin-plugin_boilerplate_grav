@@ -1,0 +1,67 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set plugin_name = 'r4it_tool_boilerplate' %}
+{% set plugin_title = "r4it Tool Boilerplate" %}
+{% set
+    tabs_config = {
+        'info': {'label': 'Info', 'icon': 'fa-info-circle'},
+        'settings': {'label': 'Settings', 'icon': 'fa-cogs'},
+        'tools': {'label': 'Tools', 'icon': 'fa-wrench'}
+    }
+%}
+
+{% block titlebar %}
+    <div class="button-bar">
+        <a class="button" href="{{ admin_route('plugins/' ~ plugin_name) }}"><i class="fa fa-reply"></i> {{ "PLUGIN_ADMIN.BACK_TO_PLUGINS"|tu }}</a>
+    </div>
+    <h1><i class="fa fa-fw fa-wrench"></i> {{ plugin_title|tu }}</h1>
+{% endblock %}
+
+{#
+  Admin base includes partials/messages.html.twig which assumes admin.messages is an array.
+  When this page is rendered via a custom interceptor, admin.messages may be NULL.
+  Override the block and make it null-safe to prevent "merge filter ... got NULL" errors.
+#}
+{% block messages %}
+    {% set admin_messages = (admin.messages|default([]))|merge(admin.getTempMessages()|default([])) %}
+    {% set form_message = form.message|default(null) %}
+    <div id="messages" class="top-notifications-container{{ admin_messages|length or form_message ? ' default-box-shadow' : '' }}">
+        <div class="single-notification info alert hidden" data-gpm-grav></div>
+        {%- for message in admin_messages -%}
+        <div class="{{ message.scope }} alert">{{ message.message|raw }}</div>
+        {%- endfor -%}
+        {%- if form_message -%}
+        <div class="error alert">{{ form_message|raw }}</div>
+        {%- endif -%}
+        {%- for message in plugin_messages|default([]) -%}
+            <div class="{{ message.scope }} alert">{{ message.message|raw }}</div>
+        {%- endfor -%}
+    </div>
+{% endblock %}
+
+{% block content %}
+    {# Load custom CSS for the tool page #}
+    {% do assets.addCss('plugin://' ~ plugin_name ~ '/admin/assets/tool-boilerplate.css', 10) %}
+
+    <div class="admin-block">
+        <div class="admin-tabs">
+            {% for key, tab_info in tabs_config %}
+                <a class="admin-tab {% if active_tab == key %}active{% endif %}" href="{{ admin_route('r4it-tool') ~ '/tab' ~ config.system.param_sep ~ key }}">
+                    <i class="fa {{ tab_info.icon }}"></i> {{ tab_info.label }}
+                </a>
+            {% endfor %}
+        </div>
+
+        <div class="admin-panes">
+            <div class="admin-pane">
+                {% if active_tab == 'info' %}
+                    {% include 'partials/_info.html.twig' %}
+                {% elseif active_tab == 'settings' %}
+                    {% include 'partials/_settings.html.twig' %}
+                {% elseif active_tab == 'tools' %}
+                    {% include 'partials/_tools.html.twig' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
