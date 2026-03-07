@@ -1,5 +1,5 @@
 {
-    "name": "r4it/grav-plugin-tool-boilerplate",
+    "name": "timejunky/grav-plugin-admin-plugin-boilerplate",
     "type": "grav-plugin",
     "description": "A boilerplate for Grav admin tool plugins.",
     "license": "MIT",
@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Grav\Plugin\R4itToolBoilerplate": "classes/"
+            "Grav\Plugin\R4itAdminPluginBoilerplate": "classes/"
         }
     },
     "autoload-dev": {

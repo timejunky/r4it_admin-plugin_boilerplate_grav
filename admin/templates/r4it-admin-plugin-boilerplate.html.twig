@@ -1,7 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set plugin_name = 'r4it_tool_boilerplate' %}
-{% set plugin_title = "r4it Tool Boilerplate" %}
+{% set plugin_name = 'r4it_admin_plugin_boilerplate' %}
+{% set plugin_title = "r4it Admin Plugin Boilerplate" %}
 {% set
     tabs_config = {
         'info': {'label': 'Info', 'icon': 'fa-info-circle'},
@@ -41,12 +41,12 @@
 
 {% block content %}
     {# Load custom CSS for the tool page #}
-    {% do assets.addCss('plugin://' ~ plugin_name ~ '/admin/assets/tool-boilerplate.css', 10) %}
+    {% do assets.addCss('plugin://' ~ plugin_name ~ '/admin/assets/admin-plugin-boilerplate.css', 10) %}
 
     <div class="admin-block">
         <div class="admin-tabs">
             {% for key, tab_info in tabs_config %}
-                <a class="admin-tab {% if active_tab == key %}active{% endif %}" href="{{ admin_route('r4it-tool') ~ '/tab' ~ config.system.param_sep ~ key }}">
+                <a class="admin-tab {% if active_tab == key %}active{% endif %}" href="{{ admin_route('r4it-admin-plugin-boilerplate') ~ '/tab' ~ config.system.param_sep ~ key }}">
                     <i class="fa {{ tab_info.icon }}"></i> {{ tab_info.label }}
                 </a>
             {% endfor %}

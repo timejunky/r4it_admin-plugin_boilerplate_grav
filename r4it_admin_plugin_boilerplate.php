@@ -6,7 +6,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 
-class R4itToolBoilerplatePlugin extends Plugin
+class R4itAdminPluginBoilerplatePlugin extends Plugin
 {
     public static function getSubscribedEvents(): array
     {
@@ -78,8 +78,8 @@ class R4itToolBoilerplatePlugin extends Plugin
                 if ($fsLoader && method_exists($fsLoader, 'addPath')) {
                     // Default path.
                     $fsLoader->addPath($templatesDir);
-                    // Namespace path used by @r4it_tool_boilerplate/...
-                    $fsLoader->addPath($templatesDir, 'r4it_tool_boilerplate');
+                    // Namespace path used by @r4it_admin_plugin_boilerplate/...
+                    $fsLoader->addPath($templatesDir, 'r4it_admin_plugin_boilerplate');
                 }
             };
 
@@ -122,9 +122,9 @@ class R4itToolBoilerplatePlugin extends Plugin
         // Prefer Admin's own parsed location (template segment) when available.
         // Fallback to path matching for language-prefixed URLs.
         $isToolRoute = (
-            $location === 'r4it-tool'
-            || $path === 'admin/r4it-tool'
-            || (bool)preg_match('#^[a-z]{2}(?:-[a-z]{2})?/admin/r4it-tool$#i', $path)
+            $location === 'r4it-admin-plugin-boilerplate'
+            || $path === 'admin/r4it-admin-plugin-boilerplate'
+            || (bool)preg_match('#^[a-z]{2}(?:-[a-z]{2})?/admin/r4it-admin-plugin-boilerplate$#i', $path)
         );
 
         if (!$isToolRoute) {
@@ -132,8 +132,8 @@ class R4itToolBoilerplatePlugin extends Plugin
         }
 
         // Provide variables for the admin page template (rendered by the normal Admin pipeline).
-        require_once __DIR__ . '/classes/Admin/ToolBoilerplateAdminController.php';
-        $controller = new \Grav\Plugin\R4itToolBoilerplate\Admin\ToolBoilerplateAdminController($this->grav, $this);
+        require_once __DIR__ . '/classes/Admin/AdminPluginBoilerplateAdminController.php';
+        $controller = new \Grav\Plugin\R4itAdminPluginBoilerplate\Admin\AdminPluginBoilerplateAdminController($this->grav, $this);
         $data = $controller->handleRequest();
 
         if ($twig && isset($twig->twig_vars) && is_array($twig->twig_vars) && is_array($data)) {
@@ -149,12 +149,12 @@ class R4itToolBoilerplatePlugin extends Plugin
                 return;
             }
 
-            $label = 'r4it Tool (Boilerplate)';
+            $label = 'r4it Admin Plugin Boilerplate';
             try {
                 $language = $this->grav['language'] ?? null;
                 $translated = null;
                 if ($language && method_exists($language, 'translate')) {
-                    $translated = $language->translate('PLUGIN_R4IT_TOOL_BOILERPLATE.ADMIN_MENU_LABEL');
+                    $translated = $language->translate('PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ADMIN_MENU_LABEL');
                 }
                 if (is_string($translated) && trim($translated) !== '') {
                     $label = $translated;
@@ -166,9 +166,9 @@ class R4itToolBoilerplatePlugin extends Plugin
             // IMPORTANT: Use a dedicated admin tool route to avoid the "Plugins" sidebar
             // being marked active at the same time (which happens under /admin/plugins/...).
             $twig->plugins_hooked_nav[$label] = [
-                'route' => '/r4it-tool',
+                'route' => '/r4it-admin-plugin-boilerplate',
                 'icon' => 'fa-wrench',
-                'class' => 'r4it-tool-boilerplate',
+                'class' => 'r4it-admin-plugin-boilerplate',
             ];
         } catch (\Throwable $e) {
             // ignore

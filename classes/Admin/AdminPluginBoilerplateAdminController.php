@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Grav\Plugin\R4itToolBoilerplate\Admin;
+namespace Grav\Plugin\R4itAdminPluginBoilerplate\Admin;
 
 use Grav\Common\Grav;
-use Grav\Plugin\R4itToolBoilerplatePlugin;
+use Grav\Plugin\R4itAdminPluginBoilerplatePlugin;
 
-class ToolBoilerplateAdminController
+class AdminPluginBoilerplateAdminController
 {
     protected $grav;
     protected $plugin;
 
-    public function __construct(Grav $grav, R4itToolBoilerplatePlugin $plugin)
+    public function __construct(Grav $grav, R4itAdminPluginBoilerplatePlugin $plugin)
     {
         $this->grav = $grav;
         $this->plugin = $plugin;
@@ -25,12 +25,12 @@ class ToolBoilerplateAdminController
         if ($uri) {
             $param = null;
 
-            // Prefer route params: /admin/r4it-tool/tab:settings
+            // Prefer route params: /admin/r4it-admin-plugin-boilerplate/tab:settings
             if (method_exists($uri, 'param')) {
                 $param = $uri->param('tab');
             }
 
-            // Fallback: query string: /admin/r4it-tool?tab=settings
+            // Fallback: query string: /admin/r4it-admin-plugin-boilerplate?tab=settings
             if (!$param && method_exists($uri, 'query')) {
                 $param = $uri->query('tab');
             }
@@ -49,7 +49,7 @@ class ToolBoilerplateAdminController
 
         return [
             'plugin_name' => $this->plugin->name,
-            'admin_route' => rtrim($base, '/') . '/admin/r4it-tool',
+            'admin_route' => rtrim($base, '/') . '/admin/r4it-admin-plugin-boilerplate',
             'active_tab' => $activeTab,
             'tabs' => [
                 'info' => 'Info',

@@ -11,12 +11,12 @@
     </testsuites>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="BASE_URL" value="https://dev.ready-4-it.loc"/>
+        <env name="BASE_URL" value="http://localhost"/>
     </php>
     <source>
         <include>
             <directory>classes</directory>
-            <directory>r4it_tool_boilerplate.php</directory>
+            <directory>r4it_admin_plugin_boilerplate.php</directory>
         </include>
     </source>
 </phpunit>

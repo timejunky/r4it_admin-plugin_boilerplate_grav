@@ -62,7 +62,7 @@ final class AdminPageTest extends TestCase
 
     public static function adminUrlProvider(): array
     {
-        $segment = 'r4it-tool';
+        $segment = 'r4it-admin-plugin-boilerplate';
 
         return [
             'English URL' => ['/admin/' . $segment, 'English'],

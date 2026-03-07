@@ -1,7 +1,7 @@
-name: r4it Tool Boilerplate
-slug: r4it_tool_boilerplate
+name: r4it Admin Plugin Boilerplate
+slug: r4it_admin_plugin_boilerplate
 type: plugin
-version: 0.0.2
+version: 0.1.0
 description: GrayGate-style admin tool-page boilerplate (Method 2).
 icon: wrench
 
