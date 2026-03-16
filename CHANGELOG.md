@@ -16,6 +16,20 @@ and this project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [0.2.1]
+
+### Added
+
+- Repository-local branding asset at `admin/assets/logo.svg` and logo usage in admin/README.
+- New locale files for `fr`, `pt`, `tr`, and `lb`.
+- Language key consistency integration test (`LanguageFilesTest`).
+
+### Changed
+
+- Admin sidebar icon changed from wrench to flask.
+- Info tab now shows current plugin version and community support notice.
+- Support/security/docs text aligned for MIT community support channels.
+
 ### Added
 
 - `ARCHITECTURE.md` with GrayGate pattern rationale, request flow, routing strategy, and extension points.

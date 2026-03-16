@@ -8,7 +8,7 @@
 name: r4it Admin Plugin Boilerplate
 slug: r4it_admin_plugin_boilerplate
 type: plugin
-version: 0.2.0
+version: 0.2.1
 description: GrayGate-style admin tool-page boilerplate (Method 2).
 icon: flask
 homepage: https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
