@@ -1,5 +1,14 @@
 <?php
 
+/**
+r4it_admin-plugin_boilerplate_grav
+@category Grav_Plugin
+@author Nejat P. Eryigit <https://www.ready-4-it.com>
+@copyright 2026 Nejat P. Eryigit
+@license https://opensource.org/licenses/MIT MIT License
+@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+*/
+
 declare(strict_types=1);
 
 namespace Grav\Plugin;
@@ -9,6 +18,26 @@ use Grav\Common\Plugin;
 class R4itAdminPluginBoilerplatePlugin extends Plugin
 {
     public const REPO_URL = 'https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav';
+    public const LOGO_URL = '/user/plugins/r4it_admin_plugin_boilerplate/admin/assets/logo.svg';
+
+    private function getPluginVersion(): string
+    {
+        $blueprintsPath = __DIR__ . '/blueprints.yaml';
+        if (!is_readable($blueprintsPath)) {
+            return 'unknown';
+        }
+
+        $content = @file_get_contents($blueprintsPath);
+        if (!is_string($content) || $content === '') {
+            return 'unknown';
+        }
+
+        if (preg_match('/^\s*version:\s*([^\s#]+)\s*$/mi', $content, $matches) === 1) {
+            return trim($matches[1], " \t\n\r\0\x0B\"'");
+        }
+
+        return 'unknown';
+    }
 
     public static function getSubscribedEvents(): array
     {
@@ -140,6 +169,8 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
 
         if (is_array($data)) {
             $data['r4it_admin_plugin_boilerplate_repo_url'] = self::REPO_URL;
+            $data['r4it_admin_plugin_boilerplate_logo_url'] = self::LOGO_URL;
+            $data['r4it_admin_plugin_boilerplate_version'] = $this->getPluginVersion();
         }
 
         if ($twig && isset($twig->twig_vars) && is_array($twig->twig_vars) && is_array($data)) {
@@ -173,7 +204,7 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
             // being marked active at the same time (which happens under /admin/plugins/...).
             $twig->plugins_hooked_nav[$label] = [
                 'route' => '/r4it-admin-plugin-boilerplate',
-                'icon' => 'fa-wrench',
+                'icon' => 'fa-flask',
                 'class' => 'r4it-admin-plugin-boilerplate',
             ];
         } catch (\Throwable $e) {

@@ -1,12 +1,21 @@
+{#
+r4it_admin-plugin_boilerplate_grav
+@category Grav_Plugin
+@author Nejat P. Eryigit <https://www.ready-4-it.com>
+@copyright 2026 Nejat P. Eryigit
+@license https://opensource.org/licenses/MIT MIT License
+@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+#}
+
 {% extends 'partials/base.html.twig' %}
 
 {% set plugin_name = 'r4it_admin_plugin_boilerplate' %}
-{% set plugin_title = "r4it Admin Plugin Boilerplate" %}
+{% set plugin_title = 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TITLE' %}
 {% set
     tabs_config = {
-        'info': {'label': 'Info', 'icon': 'fa-info-circle'},
-        'settings': {'label': 'Settings', 'icon': 'fa-cogs'},
-        'tools': {'label': 'Tools', 'icon': 'fa-wrench'}
+        'info': {'label': 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_INFO', 'icon': 'fa-info-circle'},
+        'settings': {'label': 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_SETTINGS', 'icon': 'fa-cogs'},
+        'tools': {'label': 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_TOOLS', 'icon': 'fa-flask'}
     }
 %}
 
@@ -14,7 +23,17 @@
     <div class="button-bar">
         <a class="button" href="{{ admin_route('plugins/' ~ plugin_name) }}"><i class="fa fa-reply"></i> {{ "PLUGIN_ADMIN.BACK_TO_PLUGINS"|tu }}</a>
     </div>
-    <h1><i class="fa fa-fw fa-wrench"></i> {{ plugin_title|tu }}</h1>
+    <h1 class="r4it-admin-title">
+        {% if r4it_admin_plugin_boilerplate_logo_url is defined and r4it_admin_plugin_boilerplate_logo_url %}
+            <img
+                src="{{ r4it_admin_plugin_boilerplate_logo_url }}"
+                alt="{{ plugin_title|tu }} logo"
+                class="r4it-admin-logo"
+                loading="lazy"
+            >
+        {% endif %}
+        <i class="fa fa-fw fa-flask"></i> {{ plugin_title|tu }}
+    </h1>
 {% endblock %}
 
 {#
@@ -47,7 +66,7 @@
         <div class="admin-tabs">
             {% for key, tab_info in tabs_config %}
                 <a class="admin-tab {% if active_tab == key %}active{% endif %}" href="{{ admin_route('r4it-admin-plugin-boilerplate') ~ '/tab' ~ config.system.param_sep ~ key }}">
-                    <i class="fa {{ tab_info.icon }}"></i> {{ tab_info.label }}
+                    <i class="fa {{ tab_info.icon }}"></i> {{ tab_info.label|tu }}
                 </a>
             {% endfor %}
         </div>

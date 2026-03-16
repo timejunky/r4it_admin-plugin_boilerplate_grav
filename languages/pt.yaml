@@ -1,0 +1,36 @@
+# r4it_admin-plugin_boilerplate_grav
+# @category Grav_Plugin
+# @author Nejat P. Eryigit <https://www.ready-4-it.com>
+# @copyright 2026 Nejat P. Eryigit
+# @license https://opensource.org/licenses/MIT MIT License
+# @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+
+PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE:
+  ADMIN_MENU_LABEL: "r4it Admin Plugin Boilerplate"
+  TITLE: "r4it Admin Plugin Boilerplate"
+  LOGO_ALT: "Logo do r4it Admin Plugin Boilerplate"
+  TAB_INFO: "Info"
+  TAB_SETTINGS: "Configuracoes"
+  TAB_TOOLS: "Ferramentas"
+  INFO_HEADING: "Info"
+  INFO_INTRO: "Este e o conteudo da aba Info."
+  INFO_SAMPLE: "Um exemplo fornecido por www.ready-4-it.com"
+  INFO_REPOSITORY: "Repositorio"
+  INFO_CURRENT_VERSION: "Versao atual"
+  INFO_SUPPORT: "Suporte"
+  INFO_SUPPORT_TEXT: "O suporte desta edicao MIT/comunidade e fornecido pela comunidade Grav e por issues/discussions publicas no GitHub."
+  INFO_DESCRIPTION: "Este boilerplate demonstra o padrao GrayGate para criar uma pagina de ferramenta admin personalizada, robusta e segura para prefixos de idioma."
+  INFO_BULLET_1: "A entrada da barra lateral e adicionada em onAdminMenu()."
+  INFO_BULLET_2: "A rota da ferramenta e tratada via onTwigSiteVariables() usando o pipeline padrao do Admin."
+  INFO_BULLET_3: "O controlador classes/Admin/AdminPluginBoilerplateAdminController.php trata a requisicao e define a aba ativa."
+  INFO_BULLET_4: "Esta interface com abas e renderizada por admin/templates/r4it-admin-plugin-boilerplate.html.twig."
+  SETTINGS_HEADING: "Configuracoes"
+  SETTINGS_INTRO: "Este e o conteudo da aba Configuracoes."
+  SETTINGS_TEXT_1: "Voce pode colocar aqui formularios personalizados ou opcoes de configuracao especificas da sua ferramenta."
+  SETTINGS_TEXT_2: "Diferente da configuracao principal do plugin, que usa blueprints, este conteudo e renderizado por um template Twig, dando controle total sobre markup e logica."
+  TOOLS_HEADING: "Ferramentas"
+  TOOLS_INTRO: "Este e o conteudo da aba Ferramentas."
+  TOOLS_TEXT_1: "Este e um bom lugar para botoes de acao, formularios de importacao/exportacao ou dashboards."
+  TOOLS_SAMPLE_ACTION_LABEL: "Acao de exemplo"
+  TOOLS_SAMPLE_ACTION_PLACEHOLDER: "Digite alguns dados"
+  TOOLS_RUN_BUTTON: "Executar ferramenta"

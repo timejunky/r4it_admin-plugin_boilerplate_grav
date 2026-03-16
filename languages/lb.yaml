@@ -1,0 +1,36 @@
+# r4it_admin-plugin_boilerplate_grav
+# @category Grav_Plugin
+# @author Nejat P. Eryigit <https://www.ready-4-it.com>
+# @copyright 2026 Nejat P. Eryigit
+# @license https://opensource.org/licenses/MIT MIT License
+# @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+
+PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE:
+  ADMIN_MENU_LABEL: "r4it Admin Plugin Boilerplate"
+  TITLE: "r4it Admin Plugin Boilerplate"
+  LOGO_ALT: "r4it Admin Plugin Boilerplate Logo"
+  TAB_INFO: "Info"
+  TAB_SETTINGS: "Astellungen"
+  TAB_TOOLS: "Tools"
+  INFO_HEADING: "Info"
+  INFO_INTRO: "Daat ass den Inhalt vum Info-Tab."
+  INFO_SAMPLE: "E Beispill vu www.ready-4-it.com"
+  INFO_REPOSITORY: "Repository"
+  INFO_CURRENT_VERSION: "Aktuell Versioun"
+  INFO_SUPPORT: "Support"
+  INFO_SUPPORT_TEXT: "Support fir des MIT/Community-Editioun leeft iwwert d'Grav-Community an oeffentlech GitHub-Issues/Discussions."
+  INFO_DESCRIPTION: "Dese Boilerplate weist de GrayGate-Pattern fir eng robust, sprooch-prefix-secher personaliseiert Admin-Tool-Sait."
+  INFO_BULLET_1: "Den Sidebar-Andrag get an onAdminMenu() derbaigesat."
+  INFO_BULLET_2: "D'Tool-Route get iwwert onTwigSiteVariables() am normale Admin-Rendering behandelt."
+  INFO_BULLET_3: "De Controller classes/Admin/AdminPluginBoilerplateAdminController.php verschafft d'Ufro a setzt den aktiven Tab."
+  INFO_BULLET_4: "Des Tab-UI get duerch admin/templates/r4it-admin-plugin-boilerplate.html.twig gerendert."
+  SETTINGS_HEADING: "Astellungen"
+  SETTINGS_INTRO: "Daat ass den Inhalt vum Astellungen-Tab."
+  SETTINGS_TEXT_1: "Hei kanns du eegen Formulairen oder Config-Optiounen fir deng Tool-Logik placéieren."
+  SETTINGS_TEXT_2: "Am Geigesaz zur Haapt-Plugin-Config mat Blueprints get desen Inhalt via Twig-Template gerendert a get dir voll Kontroll iwwer Markup a Logik."
+  TOOLS_HEADING: "Tools"
+  TOOLS_INTRO: "Daat ass den Inhalt vum Tools-Tab."
+  TOOLS_TEXT_1: "Hei passen Aktiouns-Knaeppercher, Import/Export-Formulairen oder Dashboards gutt eran."
+  TOOLS_SAMPLE_ACTION_LABEL: "Beispill-Aktioun"
+  TOOLS_SAMPLE_ACTION_PLACEHOLDER: "Geff Daten an"
+  TOOLS_RUN_BUTTON: "Tool starten"

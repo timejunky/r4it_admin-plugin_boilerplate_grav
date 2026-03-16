@@ -1,9 +1,16 @@
+# r4it_admin-plugin_boilerplate_grav
+# @category Grav_Plugin
+# @author Nejat P. Eryigit <https://www.ready-4-it.com>
+# @copyright 2026 Nejat P. Eryigit
+# @license https://opensource.org/licenses/MIT MIT License
+# @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+
 name: r4it Admin Plugin Boilerplate
 slug: r4it_admin_plugin_boilerplate
 type: plugin
 version: 0.2.0
 description: GrayGate-style admin tool-page boilerplate (Method 2).
-icon: wrench
+icon: flask
 homepage: https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
 
 author:

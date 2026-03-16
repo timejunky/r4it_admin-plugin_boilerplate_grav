@@ -1,0 +1,36 @@
+# r4it_admin-plugin_boilerplate_grav
+# @category Grav_Plugin
+# @author Nejat P. Eryigit <https://www.ready-4-it.com>
+# @copyright 2026 Nejat P. Eryigit
+# @license https://opensource.org/licenses/MIT MIT License
+# @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+
+PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE:
+  ADMIN_MENU_LABEL: "r4it Admin Plugin Boilerplate"
+  TITLE: "r4it Admin Plugin Boilerplate"
+  LOGO_ALT: "r4it Admin Plugin Boilerplate logosu"
+  TAB_INFO: "Bilgi"
+  TAB_SETTINGS: "Ayarlar"
+  TAB_TOOLS: "Araclar"
+  INFO_HEADING: "Bilgi"
+  INFO_INTRO: "Bu, Bilgi sekmesinin icerigidir."
+  INFO_SAMPLE: "www.ready-4-it.com tarafindan saglanan ornek"
+  INFO_REPOSITORY: "Depo"
+  INFO_CURRENT_VERSION: "Guncel surum"
+  INFO_SUPPORT: "Destek"
+  INFO_SUPPORT_TEXT: "Bu MIT/topluluk surumu icin destek, Grav toplulugu ve acik GitHub issue/discussion kanallari uzerinden saglanir."
+  INFO_DESCRIPTION: "Bu boilerplate, dil on eki guvenli ve saglam ozel admin arac sayfasi olusturmak icin GrayGate desenini gosterir."
+  INFO_BULLET_1: "Kenar cubugu girisi onAdminMenu() icinde eklenir."
+  INFO_BULLET_2: "Arac rotasi, Admin'in standart render hattini kullanarak onTwigSiteVariables() ile ele alinir."
+  INFO_BULLET_3: "classes/Admin/AdminPluginBoilerplateAdminController.php denetleyicisi istegi isler ve aktif sekmeyi ayarlar."
+  INFO_BULLET_4: "Bu sekmeli arayuz admin/templates/r4it-admin-plugin-boilerplate.html.twig tarafindan render edilir."
+  SETTINGS_HEADING: "Ayarlar"
+  SETTINGS_INTRO: "Bu, Ayarlar sekmesinin icerigidir."
+  SETTINGS_TEXT_1: "Araciniza ozel formlar veya yapilandirma seceneklerini buraya koyabilirsiniz."
+  SETTINGS_TEXT_2: "Ana eklenti yapilandirmasindan farkli olarak bu icerik, blueprints yerine Twig template ile render edilir ve isaretleme ile mantik uzerinde tam kontrol saglar."
+  TOOLS_HEADING: "Araclar"
+  TOOLS_INTRO: "Bu, Araclar sekmesinin icerigidir."
+  TOOLS_TEXT_1: "Aksiyon butonlari, ice aktarma/disa aktarma formlari veya panolar icin uygun bir yerdir."
+  TOOLS_SAMPLE_ACTION_LABEL: "Ornek islem"
+  TOOLS_SAMPLE_ACTION_PLACEHOLDER: "Veri girin"
+  TOOLS_RUN_BUTTON: "Araci calistir"
