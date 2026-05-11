@@ -5,16 +5,25 @@
 # @license https://opensource.org/licenses/MIT MIT License
 # @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
 
-name: r4it Admin Plugin Boilerplate
+name: R4IT Admin Plugin Boilerplate
 slug: r4it_admin_plugin_boilerplate
 type: plugin
 version: 0.2.1
-description: GrayGate-style admin tool-page boilerplate (Method 2).
+description: Admin tool-page boilerplate for Grav CMS.
 icon: flask
 homepage: https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+bugs: https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav/issues
+docs: https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav#readme
+license: MIT
+keywords:
+  - grav
+  - plugin
+  - admin
+  - boilerplate
 
 author:
   name: r4it
+  homepage: https://github.com/timejunky
 
 form:
   validation: strict

@@ -20,6 +20,29 @@ This is a minimal **Method 2 (GrayGate-style)** admin tool-page boilerplate.
 Default route:
 - `/admin/r4it-admin-plugin-boilerplate` (also works with language prefix like `/de/admin/r4it-admin-plugin-boilerplate`)
 
+## Grav Package Readiness
+
+This repository is prepared so Grav can read the package metadata consistently:
+
+- `blueprints.yaml` contains the plugin name, slug, version, homepage, bugs link, docs link, license, keywords, and author metadata.
+- `CHANGELOG.md` uses versioned release sections so the release history can be matched to Git tags.
+- `composer.json` uses the Grav plugin package naming convention.
+
+To publish an update through the regular Grav update flow, keep these three values in sync for every release:
+
+1. `blueprints.yaml` version
+2. `CHANGELOG.md` release heading
+3. Git tag and GitHub release name
+
+Example release flow:
+
+```bash
+git tag -a v0.2.1 -m "Release v0.2.1"
+git push origin v0.2.1
+```
+
+Then create a GitHub Release with the same `v0.2.1` tag and submit or update the package entry in the Grav package list if needed.
+
 ## Support (MIT Community Edition)
 
 - For support, please use Grav community channels and this repository's public GitHub issues/discussions.

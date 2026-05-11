@@ -1,7 +1,7 @@
 {
-    "name": "timejunky/grav-plugin-admin-plugin-boilerplate",
+    "name": "timejunky/grav-plugin-r4it-admin-plugin-boilerplate",
     "type": "grav-plugin",
-    "description": "A boilerplate for Grav admin tool plugins.",
+    "description": "R4IT Admin Plugin Boilerplate for Grav CMS.",
     "homepage": "https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav",
     "support": {
         "issues": "https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav/issues",
