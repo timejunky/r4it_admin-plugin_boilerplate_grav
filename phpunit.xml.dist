@@ -19,12 +19,11 @@ r4it_admin-plugin_boilerplate_grav
     </testsuites>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="BASE_URL" value="http://localhost"/>
     </php>
     <source>
         <include>
             <directory>classes</directory>
-            <directory>r4it_admin_plugin_boilerplate.php</directory>
+            <file>r4it_admin_plugin_boilerplate.php</file>
         </include>
     </source>
 </phpunit>
