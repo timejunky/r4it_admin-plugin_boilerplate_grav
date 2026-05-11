@@ -18,22 +18,32 @@ use Grav\Common\Plugin;
 class R4itAdminPluginBoilerplatePlugin extends Plugin
 {
     public const REPO_URL = 'https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav';
-    public const LOGO_URL = '/user/plugins/r4it_admin_plugin_boilerplate/admin/assets/logo.svg';
+
+    protected function getLogoUrl(): string
+    {
+        return (string)$this->config->get(
+            'plugins.r4it_admin_plugin_boilerplate.logo_url',
+            '/user/plugins/r4it_admin_plugin_boilerplate/admin/assets/logo.svg'
+        );
+    }
+
+    public function getAdminToolRoute(): string
+    {
+        return (string)$this->config->get(
+            'plugins.r4it_admin_plugin_boilerplate.admin_tool_route',
+            'r4it-admin-plugin-boilerplate'
+        );
+    }
 
     private function getPluginVersion(): string
     {
-        $blueprintsPath = __DIR__ . '/blueprints.yaml';
-        if (!is_readable($blueprintsPath)) {
-            return 'unknown';
-        }
-
-        $content = @file_get_contents($blueprintsPath);
-        if (!is_string($content) || $content === '') {
-            return 'unknown';
-        }
-
-        if (preg_match('/^\s*version:\s*([^\s#]+)\s*$/mi', $content, $matches) === 1) {
-            return trim($matches[1], " \t\n\r\0\x0B\"'");
+        try {
+            $version = $this->blueprints()->get('version');
+            if (is_string($version) && $version !== '') {
+                return $version;
+            }
+        } catch (\Throwable $e) {
+            // fall through to fallback
         }
 
         return 'unknown';
@@ -152,10 +162,11 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
 
         // Prefer Admin's own parsed location (template segment) when available.
         // Fallback to path matching for language-prefixed URLs.
+        $toolRoute = $this->getAdminToolRoute();
         $isToolRoute = (
-            $location === 'r4it-admin-plugin-boilerplate'
-            || $path === 'admin/r4it-admin-plugin-boilerplate'
-            || (bool)preg_match('#^[a-z]{2}(?:-[a-z]{2})?/admin/r4it-admin-plugin-boilerplate$#i', $path)
+            $location === $toolRoute
+            || $path === 'admin/' . $toolRoute
+            || (bool)preg_match('#^[a-z]{2}(?:-[a-z]{2})?/admin/' . preg_quote($toolRoute, '#') . '$#i', $path)
         );
 
         if (!$isToolRoute) {
@@ -169,7 +180,7 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
 
         if (is_array($data)) {
             $data['r4it_admin_plugin_boilerplate_repo_url'] = self::REPO_URL;
-            $data['r4it_admin_plugin_boilerplate_logo_url'] = self::LOGO_URL;
+            $data['r4it_admin_plugin_boilerplate_logo_url'] = $this->getLogoUrl();
             $data['r4it_admin_plugin_boilerplate_version'] = $this->getPluginVersion();
         }
 
@@ -202,10 +213,11 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
 
             // IMPORTANT: Use a dedicated admin tool route to avoid the "Plugins" sidebar
             // being marked active at the same time (which happens under /admin/plugins/...).
+            $toolRoute = $this->getAdminToolRoute();
             $twig->plugins_hooked_nav[$label] = [
-                'route' => '/r4it-admin-plugin-boilerplate',
-                'icon' => 'fa-flask',
-                'class' => 'r4it-admin-plugin-boilerplate',
+                'route' => '/' . $toolRoute,
+                'icon'  => 'fa-flask',
+                'class' => str_replace(['_', ' '], '-', strtolower($toolRoute)),
             ];
         } catch (\Throwable $e) {
             // ignore
