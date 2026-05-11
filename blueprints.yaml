@@ -21,6 +21,10 @@ keywords:
   - admin
   - boilerplate
 
+dependencies:
+  - { name: grav, version: '>=1.7.0' }
+  - { name: admin, version: '>=1.10.0' }
+
 author:
   name: r4it
   homepage: https://github.com/timejunky

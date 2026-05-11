@@ -31,6 +31,11 @@ final class PackageMetadataTest extends TestCase
         $this->assertSame('https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav', $blueprints['homepage']);
         $this->assertSame('timejunky/grav-plugin-r4it-admin-plugin-boilerplate', $composer['name']);
         $this->assertSame('R4IT Admin Plugin Boilerplate', $blueprints['name']);
+        
+        // Verify version compatibility constraints
+        $this->assertSame('>=8.1', $composer['require']['php']);
+        $this->assertSame('>=1.7.0', $composer['require']['grav/grav']);
+        $this->assertSame('>=1.10.0', $composer['require']['grav/plugin-admin']);
     }
 
     private function parseBlueprints(string $filePath): array
