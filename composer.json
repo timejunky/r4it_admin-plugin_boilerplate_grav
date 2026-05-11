@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Grav\Plugin\R4itAdminPluginBoilerplate": "classes/"
+            "Grav\\Plugin\\R4itAdminPluginBoilerplate": "classes/"
         }
     },
     "autoload-dev": {
