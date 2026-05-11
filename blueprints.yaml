@@ -8,7 +8,7 @@
 name: R4IT Admin Plugin Boilerplate
 slug: r4it_admin_plugin_boilerplate
 type: plugin
-version: 0.2.1
+version: 0.2.2
 description: Admin tool-page boilerplate for Grav CMS.
 icon: flask
 homepage: https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
