@@ -21,6 +21,7 @@ final class PackageMetadataTest extends TestCase
     {
         $blueprintsPath = dirname(__DIR__, 2) . '/blueprints.yaml';
         $composerPath = dirname(__DIR__, 2) . '/composer.json';
+        $blueprintsContent = (string)file_get_contents($blueprintsPath);
 
         $blueprints = $this->parseBlueprints($blueprintsPath);
         $composer = json_decode((string)file_get_contents($composerPath), true, 512, JSON_THROW_ON_ERROR);
@@ -32,10 +33,12 @@ final class PackageMetadataTest extends TestCase
         $this->assertSame('timejunky/grav-plugin-r4it-admin-plugin-boilerplate', $composer['name']);
         $this->assertSame('R4IT Admin Plugin Boilerplate', $blueprints['name']);
         
-        // Verify version compatibility constraints
+        // Verify composer/runtime requirements remain installable in CI.
         $this->assertSame('>=8.1', $composer['require']['php']);
-        $this->assertSame('>=1.7.0', $composer['require']['getgrav/grav']);
-        $this->assertSame('>=1.10.0', $composer['require']['getgrav/grav-plugin-admin']);
+
+        // Verify Grav/Admin compatibility constraints from blueprints metadata.
+        $this->assertStringContainsString("{ name: grav, version: '>=1.7.0' }", $blueprintsContent);
+        $this->assertStringContainsString("{ name: admin, version: '>=1.10.0' }", $blueprintsContent);
     }
 
     private function parseBlueprints(string $filePath): array
