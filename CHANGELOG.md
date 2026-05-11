@@ -22,13 +22,13 @@ and this project follows Semantic Versioning.
 
 - Refined the security disclosure wording in SECURITY.md.
 
-## [0.2.1]
+## [0.2.1] - 2026-05-11
 
 ### Added
 
-- Repository-local branding asset at `admin/assets/logo.svg` and logo usage in admin/README.
-- New locale files for `fr`, `pt`, `tr`, and `lb`.
-- Language key consistency integration test (`LanguageFilesTest`).
+- Grav package metadata now includes license, bugs, docs, keywords, and author homepage fields.
+- Composer package name aligned with the plugin repository naming convention.
+- Release checklist documented for version/tag parity before submission to the Grav package list.
 
 ### Changed
 
@@ -36,14 +36,18 @@ and this project follows Semantic Versioning.
 - Info tab now shows current plugin version and community support notice.
 - Support/security/docs text aligned for MIT community support channels.
 
-### Added
-
 - `ARCHITECTURE.md` with GrayGate pattern rationale, request flow, routing strategy, and extension points.
 - `CONTRIBUTING.md` with issue/PR and local validation guidance.
 - `SECURITY.md` with private vulnerability disclosure process.
 - Repository-level copyright/license headers for plugin files.
 
-## [0.2.0]
+### Added
+
+- Repository-local branding asset at `admin/assets/logo.svg` and logo usage in admin/README.
+- New locale files for `fr`, `pt`, `tr`, and `lb`.
+- Language key consistency integration test (`LanguageFilesTest`).
+
+## [0.2.0] - 2026-05-10
 
 ### Added
 
@@ -52,14 +56,14 @@ and this project follows Semantic Versioning.
 - Multilingual/language-prefix-aware admin route matching.
 - Tabbed admin Twig view (`info`, `settings`, `tools`).
 
-## [0.1.1]
+## [0.1.1] - 2026-05-09
 
 ### Changed
 
 - Improved admin route stability for real-world Grav admin contexts.
 - Documentation and structure refinements.
 
-## [0.1.0]
+## [0.1.0] - 2026-05-08
 
 ### Added
 
