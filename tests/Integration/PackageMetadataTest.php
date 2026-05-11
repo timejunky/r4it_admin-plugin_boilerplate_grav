@@ -26,7 +26,7 @@ final class PackageMetadataTest extends TestCase
         $composer = json_decode((string)file_get_contents($composerPath), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertSame('r4it_admin_plugin_boilerplate', $blueprints['slug']);
-        $this->assertSame('0.2.1', $blueprints['version']);
+        $this->assertSame('0.2.2', $blueprints['version']);
         $this->assertSame('MIT', $blueprints['license']);
         $this->assertSame('https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav', $blueprints['homepage']);
         $this->assertSame('timejunky/grav-plugin-r4it-admin-plugin-boilerplate', $composer['name']);
@@ -34,8 +34,8 @@ final class PackageMetadataTest extends TestCase
         
         // Verify version compatibility constraints
         $this->assertSame('>=8.1', $composer['require']['php']);
-        $this->assertSame('>=1.7.0', $composer['require']['grav/grav']);
-        $this->assertSame('>=1.10.0', $composer['require']['grav/plugin-admin']);
+        $this->assertSame('>=1.7.0', $composer['require']['getgrav/grav']);
+        $this->assertSame('>=1.10.0', $composer['require']['getgrav/grav-plugin-admin']);
     }
 
     private function parseBlueprints(string $filePath): array
