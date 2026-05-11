@@ -18,7 +18,7 @@ r4it_admin-plugin_boilerplate_grav
     2. Return a redirect or set a flash message in the task handler.
     3. Display the result below via a Twig variable injected by the controller.
 #}
-<form method="post" action="{{ admin_route }}">
+<form method="post" action="{{ tool_action_url|default(admin_route('r4it-admin-plugin-boilerplate')) }}">
     <input type="hidden" name="task" value="runBoilerplateTool" />
     {{ nonce_field('admin-form')|raw }}
     <div class="form-field">
