@@ -6,3 +6,9 @@
 # @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
 
 enabled: true
+
+# Override the admin sidebar route slug (default: r4it-admin-plugin-boilerplate).
+# admin_tool_route: r4it-admin-plugin-boilerplate
+
+# Override the plugin logo path (default: built-in SVG).
+# logo_url: /user/plugins/r4it_admin_plugin_boilerplate/admin/assets/logo.svg

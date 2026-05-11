@@ -11,6 +11,8 @@ r4it_admin-plugin_boilerplate_grav
 
 ![r4it Admin Plugin Boilerplate Logo](admin/assets/logo.svg)
 
+![Version](https://img.shields.io/badge/version-0.2.2-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![PHP](https://img.shields.io/badge/PHP-%3E%3D8.1-8892BF) ![Grav](https://img.shields.io/badge/Grav-%3E%3D1.7.0-orange)
+
 This is a minimal **Method 2 (GrayGate-style)** admin tool-page boilerplate.
 
 - Adds an Admin sidebar entry via `onAdminMenu()`.

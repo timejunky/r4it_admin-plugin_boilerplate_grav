@@ -58,12 +58,12 @@ class AdminPluginBoilerplateAdminController
 
         return [
             'plugin_name' => $this->plugin->name,
-            'admin_route' => rtrim($base, '/') . '/admin/r4it-admin-plugin-boilerplate',
+            'admin_route' => rtrim($base, '/') . '/admin/' . $this->plugin->getAdminToolRoute(),
             'active_tab' => $activeTab,
             'tabs' => [
-                'info' => 'Info',
-                'settings' => 'Settings',
-                'tools' => 'Tools',
+                'info'     => 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_INFO',
+                'settings' => 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_SETTINGS',
+                'tools'    => 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_TOOLS',
             ],
             // Add other data for your template here
         ];
