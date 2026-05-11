@@ -59,6 +59,7 @@ class AdminPluginBoilerplateAdminController
         return [
             'plugin_name' => $this->plugin->name,
             'admin_route' => rtrim($base, '/') . '/admin/' . $this->plugin->getAdminToolRoute(),
+            'tool_action_url' => rtrim($base, '/') . '/admin/' . $this->plugin->getAdminToolRoute(),
             'active_tab' => $activeTab,
             'tabs' => [
                 'info'     => 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.TAB_INFO',
