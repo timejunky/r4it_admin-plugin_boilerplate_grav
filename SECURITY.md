@@ -17,7 +17,35 @@ Security fixes are provided for the latest maintained version on `main`.
 
 For the MIT/community edition, general support belongs to the Grav community and public GitHub discussions/issues.
 
-Please do not open public GitHub issues for suspected security vulnerabilities.
+Please do not open public 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GitHub issues for suspected security vulnerabilities.
 
 Private disclosure channel for security-only reports:
 

@@ -16,6 +16,12 @@ and this project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-05-11
+
+### Changed
+
+- Refined the security disclosure wording in SECURITY.md.
+
 ## [0.2.1]
 
 ### Added
