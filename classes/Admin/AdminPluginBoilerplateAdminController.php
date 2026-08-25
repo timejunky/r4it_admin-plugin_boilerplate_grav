@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
 r4it_admin-plugin_boilerplate_grav
@@ -6,7 +6,7 @@ r4it_admin-plugin_boilerplate_grav
 @author Nejat P. Eryigit <https://www.ready-4-it.com>
 @copyright 2026 Nejat P. Eryigit
 @license https://opensource.org/licenses/MIT MIT License
-@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+@link https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
 */
 
 declare(strict_types=1);
@@ -70,3 +70,4 @@ class AdminPluginBoilerplateAdminController
         ];
     }
 }
+

@@ -4,7 +4,7 @@ r4it_admin-plugin_boilerplate_grav
 @author Nejat P. Eryigit <https://www.ready-4-it.com>
 @copyright 2026 Nejat P. Eryigit
 @license https://opensource.org/licenses/MIT MIT License
-@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+@link https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
 -->
 
 # r4it Admin Plugin Boilerplate (Grav)
@@ -79,6 +79,7 @@ How to add a new locale:
 
 ## Documentation and Resources
 
+- [howto.en/renaming.en.md](howto.en/renaming.en.md) - Step-by-step renaming guide & automated rename scripts.
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Technical blueprint, GrayGate pattern, request flow, and extension points.
 - [CONTRIBUTING.md](CONTRIBUTING.md) - How to report issues and contribute improvements.
 - [CHANGELOG.md](CHANGELOG.md) - Project history in Keep a Changelog format.
@@ -88,3 +89,4 @@ How to add a new locale:
 
 - Canonical logo for this product: `admin/assets/logo.svg`
 - Use this logo in product-related pages and materials where branding is needed.
+

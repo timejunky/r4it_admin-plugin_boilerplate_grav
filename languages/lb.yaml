@@ -1,9 +1,9 @@
-# r4it_admin-plugin_boilerplate_grav
+﻿# r4it_admin-plugin_boilerplate_grav
 # @category Grav_Plugin
 # @author Nejat P. Eryigit <https://www.ready-4-it.com>
 # @copyright 2026 Nejat P. Eryigit
 # @license https://opensource.org/licenses/MIT MIT License
-# @link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+# @link https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
 
 PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE:
   ADMIN_MENU_LABEL: "r4it Admin Plugin Boilerplate"
@@ -34,3 +34,4 @@ PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE:
   TOOLS_SAMPLE_ACTION_LABEL: "Beispill-Aktioun"
   TOOLS_SAMPLE_ACTION_PLACEHOLDER: "Geff Daten an"
   TOOLS_RUN_BUTTON: "Tool starten"
+

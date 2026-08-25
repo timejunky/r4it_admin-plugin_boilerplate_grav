@@ -1,10 +1,10 @@
-<!--
+﻿<!--
 r4it_admin-plugin_boilerplate_grav
 @category Grav_Plugin
 @author Nejat P. Eryigit <https://www.ready-4-it.com>
 @copyright 2026 Nejat P. Eryigit
 @license https://opensource.org/licenses/MIT MIT License
-@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+@link https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
 -->
 
 # Architecture
@@ -88,3 +88,4 @@ Use these extension points when building your own tool from this boilerplate:
 - Keep templates declarative and predictable.
 - Prefer explicit route checks over implicit assumptions.
 - Fail safely in admin bootstrapping (guard/try-catch around optional services).
+

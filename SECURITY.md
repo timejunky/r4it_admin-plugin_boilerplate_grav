@@ -1,10 +1,10 @@
-<!--
+﻿<!--
 r4it_admin-plugin_boilerplate_grav
 @category Grav_Plugin
 @author Nejat P. Eryigit <https://www.ready-4-it.com>
 @copyright 2026 Nejat P. Eryigit
 @license https://opensource.org/licenses/MIT MIT License
-@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+@link https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
 -->
 
 # Security Policy
@@ -49,7 +49,7 @@ GitHub issues for suspected security vulnerabilities.
 
 Private disclosure channel for security-only reports:
 
-- GitHub Security Advisory (preferred): https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav/security/advisories
+- GitHub Security Advisory (preferred): https://www.ready-4-it.com/r4it_admin_plugin_boilerplate/security/advisories
 
 Please include:
 
@@ -79,3 +79,4 @@ Downstream projects extending this boilerplate are responsible for validating th
 
 - Community support: Grav community forums and GitHub issues/discussions.
 - No private 1:1 support is included with this MIT/community edition.
+

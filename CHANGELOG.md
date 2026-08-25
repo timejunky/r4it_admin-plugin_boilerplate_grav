@@ -4,7 +4,7 @@ r4it_admin-plugin_boilerplate_grav
 @author Nejat P. Eryigit <https://www.ready-4-it.com>
 @copyright 2026 Nejat P. Eryigit
 @license https://opensource.org/licenses/MIT MIT License
-@link https://github.com/timejunky/r4it_admin-plugin_boilerplate_grav
+@link https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
 -->
 
 # Changelog
@@ -15,6 +15,14 @@ The format is based on Keep a Changelog,
 and this project follows Semantic Versioning.
 
 ## [Unreleased]
+
+## [0.2.3] - 2026-08-25
+
+### Added
+
+- `howto.en/renaming.en.md`: Step-by-step renaming guide and 4-casing convention reference matrix.
+- `scripts/rename-plugin.ps1` & `scripts/rename-plugin.sh`: Automated plugin renaming scripts for PowerShell and Bash.
+- Updated headers and links across all repository files to `https://www.ready-4-it.com/r4it_admin_plugin_boilerplate`.
 
 ## [0.2.2] - 2026-05-11
 
@@ -68,3 +76,4 @@ and this project follows Semantic Versioning.
 ### Added
 
 - Initial boilerplate release.
+
