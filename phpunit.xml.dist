@@ -13,6 +13,9 @@ r4it_admin-plugin_boilerplate_grav
     cacheDirectory=".phpunit.cache"
 >
     <testsuites>
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
         </testsuite>

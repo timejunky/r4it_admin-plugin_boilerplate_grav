@@ -27,7 +27,7 @@ final class PackageMetadataTest extends TestCase
         $composer = json_decode((string)file_get_contents($composerPath), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertSame('r4it_admin_plugin_boilerplate', $blueprints['slug']);
-        $this->assertSame('0.2.2', $blueprints['version']);
+        $this->assertSame('0.2.5', $blueprints['version']);
         $this->assertSame('MIT', $blueprints['license']);
         $this->assertSame('https://www.ready-4-it.com/r4it_admin_plugin_boilerplate', $blueprints['homepage']);
         $this->assertSame('timejunky/grav-plugin-r4it-admin-plugin-boilerplate', $composer['name']);

@@ -44,6 +44,8 @@ Thanks for contributing to this Grav Admin boilerplate.
 - Sidebar entry appears once and routes correctly.
 - Route works with and without language prefix.
 - Tabs render correctly (`info`, `settings`, `tools`).
+- Zebra install/update pings stay fail-open (plugin still loads if Zebra is down). License key is optional.
+- `composer test:unit` passes.
 
 ## Commit Message Style
 

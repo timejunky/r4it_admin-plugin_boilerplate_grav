@@ -26,5 +26,20 @@ r4it_admin-plugin_boilerplate_grav
     <li>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_BULLET_2'|tu }}</li>
     <li>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_BULLET_3'|tu }}</li>
     <li>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_BULLET_4'|tu }}</li>
+    <li>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_BULLET_5'|tu }}</li>
 </ul>
+{% set zebra = r4it_admin_plugin_boilerplate_zebra|default({}) %}
+<h3><i class="fa fa-bar-chart"></i> {{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_HEADING'|tu }}</h3>
+<p>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_INTRO'|tu }}</p>
+{% if zebra.reason|default('') == 'disabled' %}
+<p>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_DISABLED'|tu }}</p>
+{% else %}
+<p><strong>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_MODULE'|tu }}:</strong> {{ zebra.module_name|default('—') }}</p>
+<p><strong>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_REPORTED_VERSION'|tu }}:</strong> {{ zebra.reported_version|default('—') }}</p>
+<p><strong>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_LAST_INSTALL'|tu }}:</strong> {{ zebra.install_sent_at|default('—') }}</p>
+<p><strong>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_LAST_UPDATE'|tu }}:</strong> {{ zebra.last_update_at|default('—') }}</p>
+{% if zebra.last_error|default('') %}
+<p>{{ 'PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.INFO_ZEBRA_LAST_ERROR'|tu }}: {{ zebra.last_error }}</p>
+{% endif %}
+{% endif %}
 

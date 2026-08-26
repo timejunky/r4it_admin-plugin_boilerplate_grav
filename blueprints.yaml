@@ -8,7 +8,7 @@
 name: R4IT Admin Plugin Boilerplate
 slug: r4it_admin_plugin_boilerplate
 type: plugin
-version: 0.2.3
+version: 0.2.5
 description: Admin tool-page boilerplate for Grav CMS.
 icon: flask
 homepage: https://www.ready-4-it.com/r4it_admin_plugin_boilerplate
@@ -60,4 +60,47 @@ form:
               label: " "
               markdown: true
               content: "This plugin is a boilerplate. Settings belong to your derived plugin."
+
+        tab_zebra:
+          type: tab
+          title: Streaming Zebra
+          fields:
+            license_key:
+              type: text
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_LICENSE_KEY
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_LICENSE_KEY_HELP
+              validate:
+                required: false
+            zebra.enabled:
+              type: toggle
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_ENABLED
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_ENABLED_HELP
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            zebra.module_name:
+              type: text
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_MODULE_NAME
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_MODULE_NAME_HELP
+              default: r4it_admin_plugin_boilerplate
+            zebra.api_base_url:
+              type: text
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_API_BASE_URL
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_API_BASE_URL_HELP
+            zebra.company_key:
+              type: text
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_COMPANY_KEY
+              default: ready-4-it
+            zebra.update_check_interval_hours:
+              type: number
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_UPDATE_CHECK_INTERVAL
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_UPDATE_CHECK_INTERVAL_HELP
+              default: 24
+              validate:
+                type: int
+                min: 1
 

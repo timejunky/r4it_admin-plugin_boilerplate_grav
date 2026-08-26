@@ -1,6 +1,6 @@
 ﻿{
     "name": "timejunky/grav-plugin-r4it-admin-plugin-boilerplate",
-    "version": "0.2.2",
+    "version": "0.2.5",
     "type": "grav-plugin",
     "description": "R4IT Admin Plugin Boilerplate for Grav CMS.",
     "homepage": "https://www.ready-4-it.com/r4it_admin_plugin_boilerplate",
@@ -28,6 +28,7 @@
     },
     "scripts": {
         "test": "phpunit --colors=always",
+        "test:unit": "phpunit --testsuite=unit",
         "test:integration": "phpunit --testsuite=integration"
     },
     "config": {

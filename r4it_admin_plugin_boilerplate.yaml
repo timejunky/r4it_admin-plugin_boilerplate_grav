@@ -13,3 +13,16 @@ enabled: true
 # Override the plugin logo path (default: built-in SVG).
 # logo_url: /user/plugins/r4it_admin_plugin_boilerplate/admin/assets/logo.svg
 
+# Optional activation key from r4it / License Bridge. Empty still counts via a local install_id.
+license_key: ''
+
+# Streaming Zebra lifecycle (install / update) + throttled update_check (license only).
+# Derived plugins: set module_name to the enrolled Zebra module. license_key is optional.
+zebra:
+  enabled: true
+  module_name: r4it_admin_plugin_boilerplate
+  # Empty = host-based default (DEV .loc → api.dev.streamingzebra.loc, else api.streamingzebra.com)
+  api_base_url: ''
+  company_key: ready-4-it
+  update_check_interval_hours: 24
+

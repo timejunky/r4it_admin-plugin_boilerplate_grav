@@ -81,6 +81,8 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
         // isAdmin() can misdetect language-prefixed admin URLs like /de/admin/...
         // Detect the current request path as a fallback and only enable the
         // interceptor for actual admin requests.
+        $this->syncZebraLifecycle();
+
         $isAdminLikeRequest = $this->isAdmin() || (bool)preg_match('#^(?:[a-z]{2}(?:-[a-z]{2})?/)?admin(?:/|$)#i', $path);
 
         if ($isAdminLikeRequest) {
@@ -182,6 +184,7 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
             $data['r4it_admin_plugin_boilerplate_repo_url'] = self::REPO_URL;
             $data['r4it_admin_plugin_boilerplate_logo_url'] = $this->getLogoUrl();
             $data['r4it_admin_plugin_boilerplate_version'] = $this->getPluginVersion();
+            $data['r4it_admin_plugin_boilerplate_zebra'] = $this->zebraLifecycleStatus();
         }
 
         if ($twig && isset($twig->twig_vars) && is_array($twig->twig_vars) && is_array($data)) {
@@ -222,6 +225,124 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
         } catch (\Throwable $e) {
             // ignore
         }
+    }
+
+    private function syncZebraLifecycle(): void
+    {
+        if (PHP_SAPI === 'cli') {
+            return;
+        }
+
+        try {
+            $this->zebraTracker()->sync($this->getPluginVersion());
+        } catch (\Throwable $e) {
+            // fail-open: counting must never block Grav
+        }
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function zebraLifecycleStatus(): array
+    {
+        try {
+            return $this->zebraTracker()->status();
+        } catch (\Throwable $e) {
+            return [
+                'enabled' => false,
+                'configured' => false,
+                'reason' => 'unavailable',
+                'module_name' => '',
+                'reported_version' => '',
+                'install_sent_at' => '',
+                'last_update_at' => '',
+                'last_update_check_at' => 0,
+                'last_error' => '',
+            ];
+        }
+    }
+
+    private function zebraTracker(): \Grav\Plugin\R4itAdminPluginBoilerplate\Zebra\ZebraLifecycleTracker
+    {
+        require_once __DIR__ . '/classes/Zebra/ZebraLifecycleClient.php';
+        require_once __DIR__ . '/classes/Zebra/ZebraLifecycleTracker.php';
+
+        $client = new \Grav\Plugin\R4itAdminPluginBoilerplate\Zebra\ZebraLifecycleClient(
+            $this->zebraApiBaseUrl()
+        );
+
+        return new \Grav\Plugin\R4itAdminPluginBoilerplate\Zebra\ZebraLifecycleTracker(
+            $client,
+            $this->zebraStateFile(),
+            $this->zebraConfig(),
+            time()
+        );
+    }
+
+    /**
+     * @return array{
+     *   enabled:bool,
+     *   api_base_url:string,
+     *   module_name:string,
+     *   company_key:string,
+     *   license_key:string,
+     *   update_check_interval_hours:int
+     * }
+     */
+    private function zebraConfig(): array
+    {
+        $cfg = $this->config->get('plugins.r4it_admin_plugin_boilerplate.zebra', []);
+        if (!is_array($cfg)) {
+            $cfg = [];
+        }
+
+        return [
+            'enabled' => (bool)($cfg['enabled'] ?? true),
+            'api_base_url' => $this->zebraApiBaseUrl(),
+            'module_name' => trim((string)($cfg['module_name'] ?? 'r4it_admin_plugin_boilerplate')),
+            'company_key' => trim((string)($cfg['company_key'] ?? 'ready-4-it')),
+            'license_key' => trim((string)$this->config->get('plugins.r4it_admin_plugin_boilerplate.license_key', '')),
+            'update_check_interval_hours' => (int)($cfg['update_check_interval_hours'] ?? 24),
+        ];
+    }
+
+    private function zebraApiBaseUrl(): string
+    {
+        $base = rtrim(trim((string)$this->config->get(
+            'plugins.r4it_admin_plugin_boilerplate.zebra.api_base_url',
+            ''
+        )), '/');
+        if ($base !== '') {
+            return $base;
+        }
+
+        $host = strtolower((string)($_SERVER['HTTP_HOST'] ?? ''));
+        if (str_contains($host, 'dev.ready-4-it') || str_contains($host, '.loc')) {
+            return 'http://api.dev.streamingzebra.loc';
+        }
+
+        return 'https://api.streamingzebra.com';
+    }
+
+    private function zebraStateFile(): string
+    {
+        try {
+            $locator = $this->grav['locator'] ?? null;
+            if ($locator && method_exists($locator, 'findResource')) {
+                $dataDir = $locator->findResource('user://data', true, true);
+                if (is_string($dataDir) && $dataDir !== '') {
+                    return rtrim($dataDir, '/\\') . DIRECTORY_SEPARATOR
+                        . 'r4it_admin_plugin_boilerplate' . DIRECTORY_SEPARATOR
+                        . 'zebra-lifecycle.json';
+                }
+            }
+        } catch (\Throwable $e) {
+            // fall through
+        }
+
+        $root = defined('GRAV_ROOT') ? (string)GRAV_ROOT : dirname(__DIR__, 3);
+
+        return $root . '/user/data/r4it_admin_plugin_boilerplate/zebra-lifecycle.json';
     }
 
     public function onAdminTwigTemplatePaths($event): void

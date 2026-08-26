@@ -11,7 +11,7 @@ r4it_admin-plugin_boilerplate_grav
 
 ![r4it Admin Plugin Boilerplate Logo](admin/assets/logo.svg)
 
-![Version](https://img.shields.io/badge/version-0.2.2-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![PHP](https://img.shields.io/badge/PHP-%3E%3D8.1-8892BF) ![Grav](https://img.shields.io/badge/Grav-%3E%3D1.7.0-orange)
+![Version](https://img.shields.io/badge/version-0.2.5-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![PHP](https://img.shields.io/badge/PHP-%3E%3D8.1-8892BF) ![Grav](https://img.shields.io/badge/Grav-%3E%3D1.7.0-orange)
 
 This is a minimal **Method 2 (GrayGate-style)** admin tool-page boilerplate.
 
@@ -84,6 +84,23 @@ How to add a new locale:
 - [CONTRIBUTING.md](CONTRIBUTING.md) - How to report issues and contribute improvements.
 - [CHANGELOG.md](CHANGELOG.md) - Project history in Keep a Changelog format.
 - [SECURITY.md](SECURITY.md) - Private vulnerability disclosure process.
+
+## Streaming Zebra (install / update counts)
+
+Derived commercial plugins should keep this client and set:
+
+1. `zebra.module_name` — the enrolled Streaming Zebra module (rename with the plugin)
+2. `license_key` — optional activation key from r4it / License Bridge (enables `update_check`)
+
+Behavior:
+
+- First successful boot → `POST /api/v2/lifecycle/event` (`event=install`) with a local opaque `install_id`
+- Blueprint version change → same endpoint (`event=update`, stored on Zebra as `client_update`)
+- With a license key, at most once per `zebra.update_check_interval_hours` → `POST /api/update-check` (heartbeat, not a download KPI)
+
+HTTP failures never block Grav. Local state lives in `user/data/r4it_admin_plugin_boilerplate/zebra-lifecycle.json` so cache clears do not re-fire install.
+
+The boilerplate itself is counted after that module is enrolled on Zebra. Zebra never hosts the ZIP; GitHub stays the download lane.
 
 ## Branding Asset
 

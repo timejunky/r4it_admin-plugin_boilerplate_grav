@@ -80,6 +80,21 @@ Use these extension points when building your own tool from this boilerplate:
   - `onAdminMenu()` (label, icon, route)
 - Add styles:
   - `admin/assets/admin-plugin-boilerplate.css`
+- Add Streaming Zebra counting:
+  - `classes/Zebra/ZebraLifecycleClient.php`
+  - `classes/Zebra/ZebraLifecycleTracker.php`
+  - Config: `zebra.module_name` (must be enrolled on Zebra). `license_key` is optional.
+
+## Streaming Zebra
+
+Gateway `onPluginsInitialized()` calls `ZebraLifecycleTracker::sync()` fail-open.
+
+- `install` on first boot (opaque `install_id`; license key optional)
+- `update` when the stored version differs from `blueprints.yaml`
+- `update_check` on a throttle when a license key is set (not a download KPI)
+- State file: `user/data/r4it_admin_plugin_boilerplate/zebra-lifecycle.json`
+
+Uninstall is not pinged: Grav has no reliable plugin-uninstall hook.
 
 ## Design Principles
 

@@ -16,6 +16,20 @@ and this project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [0.2.5] - 2026-08-26
+
+### Changed
+
+- Count-only Zebra pings no longer require a license key. A local opaque `install_id` identifies the install. `update_check` still needs a key.
+
+## [0.2.4] - 2026-08-25
+
+### Added
+
+- Streaming Zebra lifecycle pings: first boot sends `install`, version change sends `update` (`client_update` on Zebra).
+- Throttled `update_check` heartbeat (default 24h). Fail-open, no `shop_url`, skipped without a license key.
+- Admin Info tab shows last reported install/update. Plugin settings tab for Zebra module + license.
+
 ## [0.2.3] - 2026-08-25
 
 ### Added
