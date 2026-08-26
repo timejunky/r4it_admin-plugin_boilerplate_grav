@@ -16,6 +16,9 @@ and this project follows Semantic Versioning.
 
 ## [Unreleased]
 
+### Fixed
+- Strip UTF-8 BOM so `declare(strict_types=1)` is the first statement. A BOM before `<?php` made every Grav page 500.
+
 ## [0.2.5] - 2026-08-26
 
 ### Changed
