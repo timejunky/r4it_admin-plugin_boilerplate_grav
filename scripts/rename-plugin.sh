@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 #
 # r4it_admin-plugin_boilerplate_grav
 # @category Grav_Plugin

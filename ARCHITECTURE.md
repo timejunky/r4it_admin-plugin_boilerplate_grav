@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 r4it_admin-plugin_boilerplate_grav
 @category Grav_Plugin
 @author Nejat P. Eryigit <https://www.ready-4-it.com>

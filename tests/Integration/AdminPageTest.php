@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
 r4it_admin-plugin_boilerplate_grav
