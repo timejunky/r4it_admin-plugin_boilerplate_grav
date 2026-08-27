@@ -16,13 +16,12 @@ and this project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [0.2.5] - 2026-08-27
+
 ### Fixed
 - Strip UTF-8 BOM so `declare(strict_types=1)` is the first statement. A BOM before `<?php` made every Grav page 500.
 
-## [0.2.5] - 2026-08-26
-
 ### Changed
-
 - Count-only Zebra pings no longer require a license key. A local opaque `install_id` identifies the install. `update_check` still needs a key.
 
 ## [0.2.4] - 2026-08-25
