@@ -81,7 +81,7 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
         // isAdmin() can misdetect language-prefixed admin URLs like /de/admin/...
         // Detect the current request path as a fallback and only enable the
         // interceptor for actual admin requests.
-        $this->syncZebraLifecycle();
+        $this->syncBeaconLifecycle();
 
         $isAdminLikeRequest = $this->isAdmin() || (bool)preg_match('#^(?:[a-z]{2}(?:-[a-z]{2})?/)?admin(?:/|$)#i', $path);
 
@@ -184,7 +184,8 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
             $data['r4it_admin_plugin_boilerplate_repo_url'] = self::REPO_URL;
             $data['r4it_admin_plugin_boilerplate_logo_url'] = $this->getLogoUrl();
             $data['r4it_admin_plugin_boilerplate_version'] = $this->getPluginVersion();
-            $data['r4it_admin_plugin_boilerplate_zebra'] = $this->zebraLifecycleStatus();
+            $data['r4it_admin_plugin_boilerplate_beacon'] = $this->beaconLifecycleStatus();
+            $data['r4it_admin_plugin_boilerplate_zebra'] = $data['r4it_admin_plugin_boilerplate_beacon'];
         }
 
         if ($twig && isset($twig->twig_vars) && is_array($twig->twig_vars) && is_array($data)) {
@@ -361,4 +362,5 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
         $event['paths'] = $paths;
     }
 }
+
 

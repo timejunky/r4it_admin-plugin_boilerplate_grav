@@ -61,20 +61,14 @@ form:
               markdown: true
               content: "This plugin is a boilerplate. Settings belong to your derived plugin."
 
-        tab_zebra:
+        tab_beacon:
           type: tab
-          title: Streaming Zebra
+          title: Alveos Beacon
           fields:
-            license_key:
-              type: text
-              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_LICENSE_KEY
-              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_LICENSE_KEY_HELP
-              validate:
-                required: false
-            zebra.enabled:
+            beacon.enabled:
               type: toggle
-              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_ENABLED
-              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_ENABLED_HELP
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_ENABLED
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_ENABLED_HELP
               highlight: 1
               default: 1
               options:
@@ -82,25 +76,19 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-            zebra.module_name:
+            beacon.app_id:
               type: text
-              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_MODULE_NAME
-              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_MODULE_NAME_HELP
-              default: r4it_admin_plugin_boilerplate
-            zebra.api_base_url:
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_APP_ID
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_APP_ID_HELP
+              default: alv_prd_boilerplate
+            beacon.token:
               type: text
-              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_API_BASE_URL
-              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_API_BASE_URL_HELP
-            zebra.company_key:
-              type: text
-              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_COMPANY_KEY
-              default: ready-4-it
-            zebra.update_check_interval_hours:
-              type: number
-              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_UPDATE_CHECK_INTERVAL
-              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.ZEBRA_UPDATE_CHECK_INTERVAL_HELP
-              default: 24
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_TOKEN
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_TOKEN_HELP
               validate:
-                type: int
-                min: 1
+                required: false
+            beacon.track_url:
+              type: text
+              label: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_TRACK_URL
+              help: PLUGIN_R4IT_ADMIN_PLUGIN_BOILERPLATE.BEACON_TRACK_URL_HELP
 

@@ -80,19 +80,20 @@ Use these extension points when building your own tool from this boilerplate:
   - `onAdminMenu()` (label, icon, route)
 - Add styles:
   - `admin/assets/admin-plugin-boilerplate.css`
-- Add Streaming Zebra counting:
-  - `classes/Zebra/ZebraLifecycleClient.php`
-  - `classes/Zebra/ZebraLifecycleTracker.php`
-  - Config: `zebra.module_name` (must be enrolled on Zebra). `license_key` is optional.
+- Add Alveos Beacon telemetry (Air-Gap from Streaming Zebra):
+  - `classes/Beacon/BeaconLifecycleClient.php`
+  - `classes/Beacon/BeaconLifecycleTracker.php`
+  - Config: `beacon.app_id` (defaults to `alv_prd_boilerplate`). Token is optional.
 
-## Streaming Zebra
+## Alveos Beacon Telemetry
 
-Gateway `onPluginsInitialized()` calls `ZebraLifecycleTracker::sync()` fail-open.
+Gateway `onPluginsInitialized()` calls `BeaconLifecycleTracker::sync()` fail-open.
 
-- `install` on first boot (opaque `install_id`; license key optional)
+- `install` on first boot (anonymous `instance_id` UUID; fail-open)
 - `update` when the stored version differs from `blueprints.yaml`
-- `update_check` on a throttle when a license key is set (not a download KPI)
-- State file: `user/data/r4it_admin_plugin_boilerplate/zebra-lifecycle.json`
+- State file: `user/data/r4it_admin_plugin_boilerplate/beacon-lifecycle.json`
+- Ingest route: `POST https://login.alveos.eu/api/v1/track`
+- Strict breach isolation: MIT/Free open-source plugins never contact Streaming Zebra.
 
 Uninstall is not pinged: Grav has no reliable plugin-uninstall hook.
 

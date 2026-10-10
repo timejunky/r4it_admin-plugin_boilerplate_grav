@@ -85,22 +85,20 @@ How to add a new locale:
 - [CHANGELOG.md](CHANGELOG.md) - Project history in Keep a Changelog format.
 - [SECURITY.md](SECURITY.md) - Private vulnerability disclosure process.
 
-## Streaming Zebra (install / update counts)
+## Alveos Beacon (install / update counts)
 
-Derived commercial plugins should keep this client and set:
+Free & MIT open-source community plugins report anonymous install and update events to Alveos Beacon:
 
-1. `zebra.module_name` — the enrolled Streaming Zebra module (rename with the plugin)
-2. `license_key` — optional activation key from r4it / License Bridge (enables `update_check`)
+1. `beacon.app_id` — the registered Beacon application ID (defaults to `alv_prd_boilerplate`)
+2. `beacon.enabled` — toggle telemetry on or off
 
 Behavior:
 
-- First successful boot → `POST /api/v2/lifecycle/event` (`event=install`) with a local opaque `install_id`
-- Blueprint version change → same endpoint (`event=update`, stored on Zebra as `client_update`)
-- With a license key, at most once per `zebra.update_check_interval_hours` → `POST /api/update-check` (heartbeat, not a download KPI)
-
-HTTP failures never block Grav. Local state lives in `user/data/r4it_admin_plugin_boilerplate/zebra-lifecycle.json` so cache clears do not re-fire install.
-
-The boilerplate itself is counted after that module is enrolled on Zebra. Zebra never hosts the ZIP; GitHub stays the download lane.
+- First successful boot → `POST https://login.alveos.eu/api/v1/track` (`event=install`) with an anonymous UUID `instance_id`
+- Blueprint version change → same endpoint (`event=update`)
+- Local state lives in `user/data/r4it_admin_plugin_boilerplate/beacon-lifecycle.json`
+- Fail-open: HTTP or network errors never block Grav or throw to the caller
+- Strict breach isolation: Community/Free editions never contact Streaming Zebra. Commercial Pro derivations keep Zebra calls strictly guarded behind an explicit Pro license key.
 
 ## Branding Asset
 
