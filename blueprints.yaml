@@ -1,4 +1,4 @@
-# r4it_admin-plugin_boilerplate_grav
+﻿# r4it_admin-plugin_boilerplate_grav
 # @category Grav_Plugin
 # @author Nejat P. Eryigit <https://www.ready-4-it.com>
 # @copyright 2026 Nejat P. Eryigit
@@ -8,7 +8,7 @@
 name: R4IT Admin Plugin Boilerplate
 slug: r4it_admin_plugin_boilerplate
 type: plugin
-version: 0.2.5
+version: 0.3.0
 description: Admin tool-page boilerplate for Grav CMS.
 icon: flask
 homepage: https://www.ready-4-it.com/r4it_admin_plugin_boilerplate

@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 r4it_admin-plugin_boilerplate_grav
 @category Grav_Plugin
 @author Nejat P. Eryigit <https://www.ready-4-it.com>
@@ -15,6 +15,15 @@ The format is based on Keep a Changelog,
 and this project follows Semantic Versioning.
 
 ## [Unreleased]
+
+## [0.3.0] - 2026-10-11
+
+### Changed
+- Complete telemetry air-gap migration: replaced all boot-time Streaming Zebra dependencies with Alveos Beacon fail-open telemetry client.
+- Purged legacy Zebra tracker and client classes.
+- Added automatic state migration from `zebra-lifecycle.json` to `beacon-lifecycle.json` to maintain install identity without double-counting.
+- Updated all language files (en, de, fr, lb, pt, tr) to Alveos Beacon keys.
+
 
 ## [0.2.5] - 2026-08-27
 
