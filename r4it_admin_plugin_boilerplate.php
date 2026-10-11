@@ -228,14 +228,14 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
         }
     }
 
-    private function syncZebraLifecycle(): void
+    private function syncBeaconLifecycle(): void
     {
         if (PHP_SAPI === 'cli') {
             return;
         }
 
         try {
-            $this->zebraTracker()->sync($this->getPluginVersion());
+            $this->beaconTracker()->sync($this->getPluginVersion());
         } catch (\Throwable $e) {
             // fail-open: counting must never block Grav
         }
@@ -244,88 +244,116 @@ class R4itAdminPluginBoilerplatePlugin extends Plugin
     /**
      * @return array<string,mixed>
      */
-    private function zebraLifecycleStatus(): array
+    private function beaconLifecycleStatus(): array
     {
         try {
-            return $this->zebraTracker()->status();
+            return $this->beaconTracker()->status();
         } catch (\Throwable $e) {
             return [
                 'enabled' => false,
                 'configured' => false,
                 'reason' => 'unavailable',
-                'module_name' => '',
+                'app_id' => 'alv_prd_boilerplate',
+                'instance_id' => '',
                 'reported_version' => '',
                 'install_sent_at' => '',
                 'last_update_at' => '',
-                'last_update_check_at' => 0,
                 'last_error' => '',
+                'module_name' => 'alv_prd_boilerplate',
+                'last_update_check_at' => 0,
             ];
         }
     }
 
-    private function zebraTracker(): \Grav\Plugin\R4itAdminPluginBoilerplate\Zebra\ZebraLifecycleTracker
+    private function beaconTracker(): \Grav\Plugin\R4itAdminPluginBoilerplate\Beacon\BeaconLifecycleTracker
     {
-        require_once __DIR__ . '/classes/Zebra/ZebraLifecycleClient.php';
-        require_once __DIR__ . '/classes/Zebra/ZebraLifecycleTracker.php';
+        require_once __DIR__ . '/classes/Beacon/BeaconLifecycleClient.php';
+        require_once __DIR__ . '/classes/Beacon/BeaconLifecycleTracker.php';
 
-        $client = new \Grav\Plugin\R4itAdminPluginBoilerplate\Zebra\ZebraLifecycleClient(
-            $this->zebraApiBaseUrl()
+        $client = new \Grav\Plugin\R4itAdminPluginBoilerplate\Beacon\BeaconLifecycleClient(
+            $this->beaconTrackUrl(),
+            $this->beaconToken()
         );
 
-        return new \Grav\Plugin\R4itAdminPluginBoilerplate\Zebra\ZebraLifecycleTracker(
+        return new \Grav\Plugin\R4itAdminPluginBoilerplate\Beacon\BeaconLifecycleTracker(
             $client,
-            $this->zebraStateFile(),
-            $this->zebraConfig(),
-            time()
+            $this->beaconStateFile(),
+            $this->beaconConfig(),
+            time(),
+            $this->legacyZebraStateFile()
         );
     }
 
     /**
      * @return array{
      *   enabled:bool,
-     *   api_base_url:string,
-     *   module_name:string,
-     *   company_key:string,
-     *   license_key:string,
-     *   update_check_interval_hours:int
+     *   app_id:string,
+     *   token:string,
+     *   track_url:string,
+     *   client_type:string
      * }
      */
-    private function zebraConfig(): array
+    private function beaconConfig(): array
     {
-        $cfg = $this->config->get('plugins.r4it_admin_plugin_boilerplate.zebra', []);
+        $cfg = $this->config->get('plugins.r4it_admin_plugin_boilerplate.beacon', []);
         if (!is_array($cfg)) {
             $cfg = [];
         }
 
         return [
             'enabled' => (bool)($cfg['enabled'] ?? true),
-            'api_base_url' => $this->zebraApiBaseUrl(),
-            'module_name' => trim((string)($cfg['module_name'] ?? 'r4it_admin_plugin_boilerplate')),
-            'company_key' => trim((string)($cfg['company_key'] ?? 'ready-4-it')),
-            'license_key' => trim((string)$this->config->get('plugins.r4it_admin_plugin_boilerplate.license_key', '')),
-            'update_check_interval_hours' => (int)($cfg['update_check_interval_hours'] ?? 24),
+            'app_id' => trim((string)($cfg['app_id'] ?? 'alv_prd_boilerplate')),
+            'token' => $this->beaconToken(),
+            'track_url' => $this->beaconTrackUrl(),
+            'client_type' => 'grav',
         ];
     }
 
-    private function zebraApiBaseUrl(): string
+    private function beaconToken(): string
     {
-        $base = rtrim(trim((string)$this->config->get(
-            'plugins.r4it_admin_plugin_boilerplate.zebra.api_base_url',
+        return trim((string)$this->config->get('plugins.r4it_admin_plugin_boilerplate.beacon.token', ''));
+    }
+
+    private function beaconTrackUrl(): string
+    {
+        $custom = rtrim(trim((string)$this->config->get(
+            'plugins.r4it_admin_plugin_boilerplate.beacon.track_url',
             ''
         )), '/');
-        if ($base !== '') {
-            return $base;
+        if ($custom !== '') {
+            return $custom;
         }
 
         $host = strtolower((string)($_SERVER['HTTP_HOST'] ?? ''));
         if (str_contains($host, 'dev.ready-4-it') || str_contains($host, '.loc')) {
-            return 'http://api.dev.streamingzebra.loc';
+            return \Grav\Plugin\R4itAdminPluginBoilerplate\Beacon\BeaconLifecycleClient::DEV_TRACK_URL;
         }
 
-        return 'https://api.streamingzebra.com';
+        return \Grav\Plugin\R4itAdminPluginBoilerplate\Beacon\BeaconLifecycleClient::DEFAULT_TRACK_URL;
     }
 
-    private function zebraStateFile(): string
+    private function beaconStateFile(): string
+    {
+        try {
+            $locator = $this->grav['locator'] ?? null;
+            if ($locator && method_exists($locator, 'findResource')) {
+                $dataDir = $locator->findResource('user://data', true, true);
+                if (is_string($dataDir) && $dataDir !== '') {
+                    return rtrim($dataDir, '/\\') . DIRECTORY_SEPARATOR
+                        . 'r4it_admin_plugin_boilerplate' . DIRECTORY_SEPARATOR
+                        . 'beacon-lifecycle.json';
+                }
+            }
+        } catch (\Throwable $e) {
+            // fall through
+        }
+
+        $root = defined('GRAV_ROOT') ? (string)GRAV_ROOT : dirname(__DIR__, 3);
+
+        return $root . '/user/data/r4it_admin_plugin_boilerplate/beacon-lifecycle.json';
+    }
+
+    private function legacyZebraStateFile(): string
     {
         try {
             $locator = $this->grav['locator'] ?? null;
